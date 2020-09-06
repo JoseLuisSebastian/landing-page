@@ -1,24 +1,47 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import { Jumbotron } from "./jumbotron.js";
 
-//create your first component
+import { Navbar } from "./navbar.js";
+
+import { Footer } from "./footer.js";
+
+import { Card } from "./card.js";
+
 export function Home() {
+	let cards = [
+		{
+			image: "./../../img/rigo-baby.jpg",
+			title: "Card  number 1",
+			text: "aaaaaaaaaaaa"
+		},
+
+		{
+			image: "./../../img/rigo-baby.jpg",
+			title: "Card  number 2",
+			text: "bbbbbbbbbbbb"
+		},
+		{
+			image: "../../img/rigo-baby.jpg",
+			title: "Card  number 3",
+			text: "ccccccccccccc"
+		},
+		{
+			image: "../../img/rigo-baby.jpg",
+			title: "Card  number 4",
+			text: "dddddddddddddd"
+		}
+	];
+
+	let cardsHtml = cards.map(card => {
+		return <Card image={card.image} title={card.title} text={card.text} />;
+	});
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container">
+			<Navbar />
+			<Jumbotron />
+			<div className="card-deck">{cardsHtml}</div>
+			<Footer />
 		</div>
 	);
 }
